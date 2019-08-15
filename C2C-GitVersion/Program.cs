@@ -56,7 +56,10 @@ namespace GitVersion
                            $"const char * build_git_version = \"{version}\";";
                 try
                 {
-                    File.WriteAllText("..\\Sources\\version.cpp", text);
+                    var path = Path.GetFullPath("..\\Sources\\version.cpp");
+                    Console.WriteLine($"writing to {path}");
+                    File.WriteAllText(path, text);
+                    Console.WriteLine("done");
                     return 0;
                 }
                 catch (Exception e)
