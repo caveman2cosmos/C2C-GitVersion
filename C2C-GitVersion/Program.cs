@@ -68,7 +68,7 @@ namespace GitVersion
                         }
                         else
                         {
-                            var appVeyorBranch = Environment.GetEnvironmentVariable("APPVEYOR_BUILD_VERSION");
+                            var appVeyorBranch = Environment.GetEnvironmentVariable("APPVEYOR_BUILD_BRANCH");
                             gitVersion = tag != null ? tag.FriendlyName : $"{(appVeyorBranch != null ? appVeyorBranch : "no-branch")}-{shortSha}";
                         }
                     }
