@@ -94,9 +94,9 @@ namespace GitVersion
                            $"const char * build_git_short_sha = \"{shortSha}\";\r\n" +
                            $"const char * build_git_version = \"{gitVersion}\";";
 
-                if (File.Exists(path)
+                if (File.Exists(path))
                 {
-                    if(File.ReadAllText(path) == text))
+                    if(File.ReadAllText(path) == text)
                         return 0;
                 }
                 try
