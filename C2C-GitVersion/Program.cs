@@ -1,4 +1,4 @@
-﻿using LibGit2Sharp;
+using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -85,7 +85,7 @@ namespace GitVersion
                 Console.WriteLine($"build_git_sha={sha}");
                 Console.WriteLine($"build_git_version={gitVersion}");
                 Console.WriteLine($"build_c2c_version={c2cVersion}");
-
+                var path = Path.GetFullPath("..\\Sources\\version.cpp");
                 var text = "/* version.cpp */\r\n" +
                            "#include \"CvGameCoreDLL.h\"\r\n" +
                            "#include \"version.h\"\r\n" +
@@ -93,9 +93,14 @@ namespace GitVersion
                            $"const char * build_git_sha = \"{sha}\";\r\n" +
                            $"const char * build_git_short_sha = \"{shortSha}\";\r\n" +
                            $"const char * build_git_version = \"{gitVersion}\";";
+
+                if (File.Exists(path)
+                {
+                    if(File.ReadAllText(path) == text))
+                        return 0;
+                }
                 try
                 {
-                    var path = Path.GetFullPath("..\\Sources\\version.cpp");
                     Console.WriteLine($"writing to {path}");
                     File.WriteAllText(path, text);
                     Console.WriteLine("done");
